@@ -1,20 +1,45 @@
-GeneMap2.txt Parser:
-====================
+# GeneMap2-Parser
 
-This script demonstrates how to parse the genemap2.txt file that can be downloaded from
-[OMIM](https://omim.org/). Note that while it parses out every field in the file it 
-doesn't output anything.
+## Overview
 
-The genemap2.txt file can downloaded from [OMIM Downloads](https://omim.org/downloads)
-(registration required).
+This script parses the `genemap2.txt` file from [OMIM](https://omim.org/) and extracts gene-related data, including phenotypes and inheritance information. The parsed output is serialized into a `.pickle` file.
 
-Sample Use:
------------
+## Installation
 
-`cat genemap2.txt | ./parseGeneMap2.py`
+```shell
+pip install git+https://github.com/OMIM-org/genemap2-parser.git
+```
 
-Userful Links:
---------------
+
+## Usage
+
+```bash
+parseGeneMap2 -i path/to/genemap2.txt -o path/to/output/
+```
+
+### Arguments
+
+- `-i, --input_file`  (Required) Path to `genemap2.txt`
+- `-o, --output_path` (Optional) Output directory (default: current directory)
+
+### Example:
+
+```bash
+parseGeneMap2 -i genemap2.txt -o output_dir/
+```
+
+## Output
+
+A `output.pickle` file containing extracted gene and phenotype data is created in the specified directory. To read:
+
+```python
+import pickle
+with open("output_dir/output.pickle", "rb") as f:
+    data = pickle.load(f)
+print(data[:5])  # First 5 entries
+```
+
+## Useful Links
 
 - [OMIM](https://omim.org/)
 - [OMIM Downloads](https://omim.org/downloads)

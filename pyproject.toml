@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genemap2_parser"
+readme = "README.md"
+description = "This script parses the `genemap2.txt` file from OMIM and extracts gene-related data"
+classifiers = ["Programming Language :: Python :: 3.13"]
+dynamic = ["version", "dependencies"]
+
+[project.scripts]
+parseGeneMap2 = "genemap2_parser.script:main"
+
+[tool.setuptools]
+packages = [
+    "genemap2_parser",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
